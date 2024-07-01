@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="12dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@drawable/item_shape">
+
+    <TextView
+        android:id="@+id/tv_itemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Загаловок"
+        android:textColor="#B1B1B1"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_itemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Описание"
+        android:textColor="#B1B1B1"
+        android:paddingBottom="15dp"
+        android:layout_marginLeft="12dp"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_itemTitle" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_monthTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="312dp"
+            android:layout_marginTop="28dp"
+            android:text="6 июня"
+            android:textColor="#616161"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tv_hoursTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="312dp"
+            android:layout_marginTop="44dp"
+            android:text="12:45"
+            android:textColor="#616161"
+            android:textSize="12sp" />
+
+
+    </FrameLayout>
+    
+    
+        
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
