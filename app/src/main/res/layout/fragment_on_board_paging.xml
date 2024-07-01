@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#0E0C0C"
+    tools:context=".ui.fragments.onboard.OnBoardPagingFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/tv_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hello_blank_fragment"
+        android:textSize="16sp"
+        android:textColor="#F3F3F3"
+        android:textStyle="bold"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottiAnimationView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:lottie_url="REPLACE_JSON_URL"
+        android:layout_gravity="center"
+        android:layout_marginBottom="80dp"
+        app:lottie_rawRes="@raw/firstanimation"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"/>
+
+</FrameLayout>
