@@ -50,6 +50,8 @@ class SingUpFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSingUpBinding.inflate(inflater, container, false)
+        setUpListner()
+
         auth = Firebase.auth
 
         val gsa = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -64,7 +66,6 @@ class SingUpFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setUpListner()
 
     }
 
@@ -76,7 +77,6 @@ class SingUpFragment : Fragment() {
             val signinIntent = googleSingInClient.signInIntent
             signInLauncher.launch(signinIntent)
 
-            findNavController().navigate(R.id.action_singUpFragment_to_noteFragment)
         }
 
     }
