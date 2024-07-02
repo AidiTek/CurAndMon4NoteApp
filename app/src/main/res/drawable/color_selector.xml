@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Состояние выбрано (черный цвет) -->
+    <item android:drawable="@drawable/selected_indicator" android:state_selected="true" />
+    <!-- Состояние фокусировки (белый цвет) -->
+    <item android:drawable="@drawable/focused_indicator" android:state_focused="true" />
+    <!-- Состояние остальных (красный цвет) -->
+    <item android:drawable="@drawable/unselected_indicator" />
+
+</selector>

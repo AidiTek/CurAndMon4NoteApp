@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 
 import com.example.noteapp.R
 import com.example.noteapp.databinding.ActivityMainBinding
-import com.example.noteapp.utils.SheredPreference
+import com.example.noteapp.utils.SharedPreference
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,18 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-        val sharedPreferences = SheredPreference()
+        val sharedPreferences = SharedPreference()
         sharedPreferences.unit(this)
 
         val isOnboardingCompleted = sharedPreferences.isBoard
         val navController = findNavController(R.id.fragment)
-
-        val currentTime = System.currentTimeMillis()
-        val lastLounchTime = sharedPreferences.lastLounchTime
-
-        if (lastLounchTime == 0L || lastLounchTime > currentTime) {
-            sharedPreferences.clear()
-        }
 
         if (isOnboardingCompleted) {
             navController.navigate(R.id.noteFragment)
