@@ -12,8 +12,10 @@ import com.example.noteapp.R
 import com.example.noteapp.data.db.daos.NoteDao
 import com.example.noteapp.data.models.NoteModels
 import com.example.noteapp.databinding.ItemNoteBinding
+import com.example.noteapp.interfaces.OnClickItem
 
-class NoteAdater : ListAdapter<NoteModels, NoteAdater.ViewHolder>(DiffCallback()) {
+class NoteAdater(private val onLongClick: OnClickItem,private val onclick :OnClickItem) :
+    ListAdapter<NoteModels, NoteAdater.ViewHolder>(DiffCallback()) {
     class ViewHolder(private val binding: ItemNoteBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(note: NoteModels?) {
             binding.tvItemTitle.text = note?.title
@@ -44,6 +46,20 @@ class NoteAdater : ListAdapter<NoteModels, NoteAdater.ViewHolder>(DiffCallback()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+
+        holder.itemView.setOnLongClickListener{
+
+            onLongClick.onLongClick(getItem(position))
+            true
+
+        }
+
+        holder.itemView.setOnClickListener{
+
+            onclick.onClick(getItem(position))
+
+        }
+
     }
 
     class DiffCallback : DiffUtil.ItemCallback<NoteModels>() {

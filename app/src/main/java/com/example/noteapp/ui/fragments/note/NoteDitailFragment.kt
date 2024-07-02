@@ -1,5 +1,6 @@
 package com.example.noteapp.ui.fragments.note
 
+import android.app.Application
 import android.graphics.Color
 import android.icu.util.Calendar
 import android.os.Bundle
@@ -21,6 +22,7 @@ class NoteDitailFragment : Fragment() {
 
     private lateinit var binding: FragmentNoteDitailBinding
     private var selectedColor: Int = Color.BLACK
+    private var noteId: Int = -1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,16 +35,27 @@ class NoteDitailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        updateNote()
         setupListeners()
         updateColorIndicators()
         updateVisibility()
         updateTextViewVisibility()
-
     }
 
+    private fun updateNote() {
+        arguments?.let {
+            noteId = it.getInt("noteId", -1)
+        }
+        if (noteId != -1) {
+            val argsNote = App().getInstenc()?.notesDao()?.getNoteId(noteId)
+            argsNote?.let { model ->
+                binding.etTitle.setText(model.title)
+                binding.etDescription.setText(model.description) // это строка была пропущена
+            }
+        }
+    }
 
     private fun setupListeners() {
-
         val calendar = Calendar.getInstance()
         val dateFormatMonth = SimpleDateFormat("dd MMMM", Locale.getDefault())
         val dateFormat = SimpleDateFormat("HH:mm", Locale.getDefault())
@@ -53,9 +66,7 @@ class NoteDitailFragment : Fragment() {
         binding.tvTimeHourth.text = curentTimeHours
 
         binding.imgArrowBack.setOnClickListener {
-
             findNavController().navigate(R.id.noteFragment)
-
         }
 
         binding.blackContainer.setOnClickListener {
@@ -77,13 +88,11 @@ class NoteDitailFragment : Fragment() {
     }
 
     private fun selectColor(color: Int) {
-
         selectedColor = color
         updateColorIndicators()
     }
 
     private fun updateColorIndicators() {
-
         binding.blackIndicator.visibility =
             if (selectedColor == Color.BLACK) View.VISIBLE else View.GONE
         binding.whiteIndicator.visibility =
@@ -92,15 +101,13 @@ class NoteDitailFragment : Fragment() {
             if (selectedColor == ContextCompat.getColor(requireContext(), R.color.red)) View.VISIBLE else View.GONE
     }
 
-    private fun updateVisibility()= with(binding) {
-
-        etTitle.addTextChangedListener{
+    private fun updateVisibility() = with(binding) {
+        etTitle.addTextChangedListener {
             updateTextViewVisibility()
         }
         etDescription.addTextChangedListener {
             updateTextViewVisibility()
         }
-
     }
 
     private fun updateTextViewVisibility() {
@@ -115,16 +122,18 @@ class NoteDitailFragment : Fragment() {
     }
 
     private fun saveNote() {
-
         val tvTimeMonth = binding.tvTimeMonth.text.toString()
-
         val tvTimeHours = binding.tvTimeHourth.text.toString()
         val etTitle = binding.etTitle.text.toString()
         val etDescription = binding.etDescription.text.toString()
 
-
-        App().getInstenc()?.notesDao()
-            ?.noteInsert(
+        if (noteId != -1) {
+            val updateNote = NoteModels(etTitle, etDescription, selectedColor, tvTimeMonth, tvTimeHours).apply {
+                id = noteId
+            }
+            App().getInstenc()?.notesDao()?.updateNote(updateNote)
+        } else {
+            App().getInstenc()?.notesDao()?.noteInsert(
                 NoteModels(
                     etTitle,
                     etDescription,
@@ -133,6 +142,7 @@ class NoteDitailFragment : Fragment() {
                     tvTimeHours
                 )
             )
+        }
 
         findNavController().navigateUp()
     }

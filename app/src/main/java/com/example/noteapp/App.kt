@@ -3,7 +3,7 @@ package com.example.noteapp
 import android.app.Application
 import androidx.room.Room
 import com.example.noteapp.data.db.AppDataBase
-import com.example.noteapp.utils.SheredPreference
+import com.example.noteapp.utils.SharedPreference
 
 class App : Application() {
 
@@ -15,8 +15,8 @@ class App : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        val sheredPreferenc = SheredPreference()
-        sheredPreferenc.unit(this)
+        val sharedPreferenc = SharedPreference()
+        sharedPreferenc.unit(this)
 
         getInstenc()
 

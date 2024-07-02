@@ -13,7 +13,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.noteapp.R
 import com.example.noteapp.databinding.FragmentOnBoardBinding
 import com.example.noteapp.ui.adapters.OnBoardViewPagerAdapter
-import com.example.noteapp.utils.SheredPreference
+import com.example.noteapp.utils.SharedPreference
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -40,28 +40,29 @@ class OnBoardFragment : Fragment() {
         binding.viewPager2.adapter = OnBoardViewPagerAdapter(this)
         TabLayoutMediator(binding.tabLayout, binding.viewPager2) { tab, position ->
             val custumView = LayoutInflater.from(binding.tabLayout.context)
-                .inflate(R.layout.tab_item,binding.tabLayout,false)
-            val tabIcon =custumView.findViewById<ImageView>(R.id.tab_icon)
+                .inflate(R.layout.tab_item, binding.tabLayout, false)
+            val tabIcon = custumView.findViewById<ImageView>(R.id.tab_icon)
             tabIcon.setImageResource(getTabIcon(position))
 
             tab.customView = custumView
         }.attach()
-}
-        private fun getTabIcon(position: Int): Int {
-            return when (position) {
-                0 -> R.drawable.circle_selected
-                1 -> R.drawable.circle_selected
-                2 -> R.drawable.circle_selected
-                else -> R.id.tab_icon // Замените на вашу иконку по умолчанию или исходную
-            }
+    }
+
+    private fun getTabIcon(position: Int): Int {
+        return when (position) {
+            0 -> R.drawable.circle_selected
+            1 -> R.drawable.circle_selected
+            2 -> R.drawable.circle_selected
+            else -> R.id.tab_icon // Замените на вашу иконку по умолчанию или исходную
         }
+    }
 
     private fun setupListner() = with(binding.viewPager2) {
         registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
 
-resetTab()
+                resetTab()
 
                 val selectedTab = binding.tabLayout.getTabAt(position)
                 selectedTab?.customView?.findViewById<ImageView>(R.id.tab_icon)
@@ -86,10 +87,10 @@ resetTab()
             }
         }
         binding.tvStart.setOnClickListener {
-            val sheredPreference = SheredPreference()
-            sheredPreference.unit(requireContext())
+            val sharedPreference = SharedPreference()
+            sharedPreference.unit(requireContext())
 
-            sheredPreference.isBoard = true
+            sharedPreference.isBoard = true
 
             findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
 
