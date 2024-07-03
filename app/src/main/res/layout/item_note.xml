@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -9,22 +8,30 @@
     android:layout_marginRight="20dp"
     android:background="@drawable/item_shape">
 
-    <TextView
-        android:id="@+id/tv_itemTitle"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Загаловок"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <TextView
+        android:id="@+id/tv_itemTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Заголовок"
         android:textColor="#B1B1B1"
         android:layout_marginTop="15dp"
         android:layout_marginLeft="12dp"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_itemDescription"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Описание"
         android:textColor="#B1B1B1"
@@ -32,39 +39,33 @@
         android:layout_marginLeft="12dp"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@id/tv_itemTitle" />
-
 
     <TextView
         android:id="@+id/tv_monthTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="24dp"
+        android:layout_marginRight="12dp"
         android:text="6 июня"
         android:textColor="#616161"
         android:textSize="12sp"
-        android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <TextView
         android:id="@+id/tv_hoursTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="40dp"
+        android:layout_marginRight="12dp"
         android:text="12:45"
         android:textColor="#616161"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    
-    
-        
-
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

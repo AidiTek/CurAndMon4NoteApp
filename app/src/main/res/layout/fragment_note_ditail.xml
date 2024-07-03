@@ -8,53 +8,67 @@
     android:orientation="vertical"
     tools:context=".ui.fragments.note.NoteDitailFragment">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0E0C0C"
+        android:paddingBottom="12dp"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/img_arrowBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="22dp"
-            android:src="@drawable/baseline_arrow_back_24" />
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_timeMonth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="13dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="12dp"
             android:text="35 Мая"
             android:textColor="#E6E6E6"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/img_arrowBack"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_timeHourth"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="22dp"
+            android:layout_marginTop="12dp"
             android:text="17:21"
             android:textColor="#B1B1B1"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            app:layout_constraintStart_toEndOf="@+id/tv_timeMonth"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/tv_saved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
-            android:layout_marginTop="22dp"
             android:text="Готово"
             android:textColor="#D88B02"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <EditText
         android:id="@+id/et_title"
