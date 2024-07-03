@@ -7,7 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.noteapp.App
@@ -15,6 +19,7 @@ import com.example.noteapp.R
 import com.example.noteapp.data.models.NoteModels
 import com.example.noteapp.databinding.FragmentNoteBinding
 import com.example.noteapp.interfaces.OnClickItem
+import com.example.noteapp.ui.MainActivity
 import com.example.noteapp.ui.adapters.NoteAdater
 import com.example.noteapp.utils.SharedPreference
 
@@ -27,7 +32,10 @@ class NoteFragment : Fragment(), OnClickItem {
 
     private var isLinearLayout = true
 
-    private lateinit var sharedPreference :SharedPreference
+    private lateinit var sharedPreference: SharedPreference
+
+    private lateinit var drawerLayout: DrawerLayout
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +66,15 @@ class NoteFragment : Fragment(), OnClickItem {
 
         }
 
+        imgMenu.setOnClickListener{
+
+            val mainActivity = activity as? MainActivity
+            mainActivity?.openDrawer()
+
+        }
+
     }
+
 
     private fun initialize() {
         binding.rvNote.apply {
