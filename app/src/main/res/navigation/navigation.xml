@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_noteFragment_to_noteDitailFragment"
             app:destination="@id/noteDitailFragment" />
+        <action
+            android:id="@+id/action_noteFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
     </fragment>
     <fragment
         android:id="@+id/onBoardFragment"
@@ -46,5 +49,10 @@
             android:id="@+id/action_singUpFragment_to_noteFragment"
             app:destination="@id/noteFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.noteapp.ui.fragments.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
 
 </navigation>
