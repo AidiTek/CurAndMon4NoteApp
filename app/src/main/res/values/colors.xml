@@ -5,4 +5,5 @@
     <color name="red">#571818</color>
     <color name="grey">#383838</color>
     <color name="yelow">#D88B02</color>
+    <color name="statusBarColor">#383838</color>
 </resources>

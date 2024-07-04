@@ -34,8 +34,6 @@ class NoteFragment : Fragment(), OnClickItem {
 
     private lateinit var sharedPreference: SharedPreference
 
-    private lateinit var drawerLayout: DrawerLayout
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -99,7 +97,7 @@ class NoteFragment : Fragment(), OnClickItem {
             updateImgShape(newLayoutState)
 
             if (newLayoutState != isLinearLayout) {
-                // Сохранение в SharedPreferences только если состояние изменилось
+
                 isLinearLayout = newLayoutState
                 sharedPreference.isLinearLayout = isLinearLayout
             }
