@@ -65,6 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="28dp"
                 android:layout_marginRight="28dp"
+                android:layout_marginBottom="12dp"
                 android:textColor="#B1B1B1"
                 android:background="@drawable/et_search_shape"
                 android:hint="Поиск заметок"

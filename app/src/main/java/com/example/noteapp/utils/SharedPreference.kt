@@ -13,10 +13,6 @@ class SharedPreference {
 
     }
 
-    var title : String?
-        get() = sharedPreference.getString("title"," ")
-        set(value) = sharedPreference.edit().putString("title",value)!!.apply()
-
     var isBoard: Boolean
 
         get() = sharedPreference.getBoolean("board", false)
@@ -24,7 +20,7 @@ class SharedPreference {
 
 
     var isLinearLayout: Boolean
-        get() = sharedPreference.getBoolean("isLinearLayout", true) // по умолчанию линейный макет
+        get() = sharedPreference.getBoolean("isLinearLayout", true)
         set(value) = sharedPreference.edit().putBoolean("isLinearLayout", value).apply()
 
 
